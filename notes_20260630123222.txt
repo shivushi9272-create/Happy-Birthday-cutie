@@ -1,0 +1,239 @@
+06.30 12:28 PM
+intex.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+overflow:hidden;
+background:linear-gradient(135deg,#ff4d6d,#ff758c,#ff9a9e);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.container{
+z-index:2;
+padding:20px;
+}
+
+h1{
+font-size:60px;
+animation:glow 2s infinite alternate;
+}
+
+h2{
+margin-top:15px;
+font-size:35px;
+}
+
+p{
+margin-top:20px;
+font-size:22px;
+max-width:700px;
+}
+
+button{
+margin-top:35px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+background:white;
+color:#ff1744;
+font-size:20px;
+cursor:pointer;
+font-weight:bold;
+transition:.4s;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ffe6ea;
+}
+
+@keyframes glow{
+0%{
+text-shadow:0 0 10px white;
+}
+100%{
+text-shadow:0 0 30px yellow,0 0 60px white;
+}
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 8s linear infinite;
+opacity:.8;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh) rotate(0deg);
+}
+100%{
+transform:translateY(-120vh) rotate(360deg);
+}
+}
+
+.balloon{
+position:absolute;
+width:60px;
+height:80px;
+border-radius:50%;
+animation:rise 10s linear infinite;
+}
+
+.balloon::after{
+content:'';
+position:absolute;
+left:50%;
+top:80px;
+width:2px;
+height:80px;
+background:white;
+}
+
+@keyframes rise{
+0%{
+transform:translateY(120vh);
+}
+100%{
+transform:translateY(-150vh);
+}
+}
+
+#message{
+margin-top:30px;
+font-size:28px;
+font-weight:bold;
+display:none;
+animation:fade 2s;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1> Happy Birthday </h1>
+
+<h2>Dear Soumya ❤️</h2>
+
+<p>
+May your life always be filled with happiness,
+success, love and endless smiles.
+May all your dreams come true.
+Have an amazing birthday! ❤️
+</p>
+
+<button onclick="wish()">Click for Surprise </button>
+
+<div id="message">
+ Wishing You a Day Full of Love, Joy & Beautiful Memories! 
+</div>
+
+</div>
+
+<script>
+
+function wish(){
+document.getElementById("message").style.display="block";
+createConfetti();
+}
+
+for(let i=0;i<40;i++){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(4+Math.random()*6)+"s";
+heart.style.fontSize=(20+Math.random()*20)+"px";
+
+document.body.appendChild(heart);
+}
+
+const colors=["red","blue","yellow","green","purple","orange","pink"];
+
+for(let i=0;i<15;i++){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=(8+Math.random()*6)+"s";
+
+document.body.appendChild(b);
+
+}
+
+function createConfetti(){
+
+for(let i=0;i<150;i++){
+
+let c=document.createElement("div");
+
+c.style.position="absolute";
+c.style.width="8px";
+c.style.height="8px";
+c.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+c.style.left=Math.random()*100+"vw";
+c.style.top="-10px";
+
+c.style.borderRadius="50%";
+
+document.body.appendChild(c);
+
+let fall=Math.random()*5+5;
+
+c.animate([
+{transform:"translateY(0px)"},
+{transform:"translateY(110vh)"}
+],{
+duration:fall*1000,
+iterations:1
+});
+
+setTimeout(()=>{
+c.remove();
+},fall*1000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
